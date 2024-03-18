@@ -5,12 +5,15 @@ return [
    //Клас пользователя
    'identity' => \Model\User::class,
    //Классы для middleware
-   
    'routeMiddleware' => [
        'auth' => \Middlewares\AuthMiddleware::class,
-       'validators' => [
-        'required' => \Validators\RequireValidator::class,
-        'unique' => \Validators\UniqueValidator::class
-       ]
-    ]
+       'trim' => \Middlewares\TrimMiddleware::class,
+       'trim' => \Middlewares\TrimMiddleware::class,
+
+   ],
+   'validators' => [
+    'required' => \Validators\RequireValidator::class,
+    'unique' => \Validators\UniqueValidator::class
+]
+
 ];
