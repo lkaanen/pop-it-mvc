@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'stas2/htdocs',
-        'pretty_version' => '1.0.0+no-version-set',
-        'version' => '1.0.0.0',
-        'reference' => null,
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
+        'reference' => '460eaf8bcbbf62421492fc24b38d6c79218db658',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -221,9 +221,9 @@
             ),
         ),
         'stas2/htdocs' => array(
-            'pretty_version' => '1.0.0+no-version-set',
-            'version' => '1.0.0.0',
-            'reference' => null,
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
+            'reference' => '460eaf8bcbbf62421492fc24b38d6c79218db658',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
