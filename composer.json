@@ -1,12 +1,11 @@
 {
-    "name": "stas2/htdocs",
-    "description": "cool project",
+    "name": "lkaanen/pop-it-mvc",
     "type": "project",
     "license": "MIT",
     "authors": [
         {
-            "name": "viVo4s",
-            "email": "stas22900@mail.ru"
+            "name": "lkaanen",
+            "email": "romvik20@gmail.com"
         }
     ],
     "minimum-stability": "dev",
