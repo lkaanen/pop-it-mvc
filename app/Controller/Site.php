@@ -7,7 +7,7 @@ use Src\View;
 use Src\Request;
 use Model\User;
 use Src\Auth\Auth;
-use Model\employees;
+use Model\abonents;
 use Src\Validator\Validator;
 
 
@@ -76,10 +76,10 @@ class Site
     app()->route->redirect('/hello');
     }
 
-    public function employees(): string
+    public function abonents(Request $request): string
     {
-        $employees = employees::all();   
-        return new View('site.employees', ['employees' => $employees]);
+        $abonents = abonents::all();   
+        return new View('site.abonents', ['abonents' => $abonents]);
     }
 
     

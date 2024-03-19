@@ -39,7 +39,7 @@
        else:
            ?>
            <a href="<?= app()->route->getUrl('/logout') ?>">Выход (<?= app()->auth::user()->name ?>)</a>
-           <a href="<?= app()->route->getUrl('/employees') ?>">добавление</a>           
+           <a href="<?= app()->route->getUrl('/abonents') ?>">добавить абонента</a>           
        <?php
        endif;
        ?>
