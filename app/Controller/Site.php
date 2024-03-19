@@ -9,6 +9,8 @@ use Model\User;
 use Src\Auth\Auth;
 use Model\abonents;
 use Src\Validator\Validator;
+use Model\podrazdeleniya;
+use Model\pomeshcheniya;
 
 
 
@@ -80,6 +82,18 @@ class Site
     {
         $abonents = abonents::all();   
         return new View('site.abonents', ['abonents' => $abonents]);
+    }
+
+    public function podrazdeleniya (Request $request): string
+    {
+        $podrazdeleniya = podrazdeleniya::all();   
+        return new View('site.podrazdeleniya', ['podrazdeleniya' => $podrazdeleniya]);
+    }
+
+    public function  pomeshcheniya (Request $request): string
+    {
+        $pomeshcheniya =  pomeshcheniya::all();   
+        return new View('site.pomeshcheniya', [' pomeshcheniya' => $pomeshcheniya]);
     }
 
     
