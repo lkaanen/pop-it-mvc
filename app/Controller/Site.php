@@ -10,7 +10,9 @@ use Src\Auth\Auth;
 use Model\abonents;
 use Src\Validator\Validator;
 use Model\podrazdeleniya;
+use Model\telefoni;
 use Model\pomeshcheniya;
+
 
 
 
@@ -26,7 +28,7 @@ class Site
    {
        return new View('site.hello', ['message' => 'hello working']);
    }
-   
+
    public function signup(Request $request): string
     {
     if ($request->method === 'POST' && User::create($request->all())) {
@@ -34,7 +36,7 @@ class Site
     }
     {
         if ($request->method === 'POST') {
-     
+
             $validator = new Validator($request->all(), [
                 'name' => ['required'],
                 'login' => ['required', 'unique:users,login'],
@@ -43,20 +45,21 @@ class Site
                 'required' => 'Поле :field пусто',
                 'unique' => 'Поле :field должно быть уникально'
             ]);
-     
+
             if($validator->fails()){
                 return new View('site.signup',
                     ['message' => json_encode($validator->errors(), JSON_UNESCAPED_UNICODE)]);
             }
-     
+
             if (User::create($request->all())) {
                 app()->route->redirect('/login');
             }
         }
         return new View('site.signup');
      }
-     
+
     }
+
 
     public function login(Request $request): string
     {
@@ -74,29 +77,31 @@ class Site
 
     public function logout(): void
     {
-    Auth::logout();
-    app()->route->redirect('/hello');
+        Auth::logout();
+        app()->route->redirect('/hello');
     }
 
     public function abonents(Request $request): string
     {
-        $abonents = abonents::all();   
+        $abonents = abonents::all();
         return new View('site.abonents', ['abonents' => $abonents]);
     }
 
     public function podrazdeleniya (Request $request): string
     {
-        $podrazdeleniya = podrazdeleniya::all();   
+        $podrazdeleniya = podrazdeleniya::all();
         return new View('site.podrazdeleniya', ['podrazdeleniya' => $podrazdeleniya]);
     }
 
-    public function  pomeshcheniya (Request $request): string
-    {
-        $pomeshcheniya =  pomeshcheniya::all();   
-        return new View('site.pomeshcheniya', [' pomeshcheniya' => $pomeshcheniya]);
-    }
-
-    
+    public function telefoni(Request $request)
+{
+    $telefoni = telefoni::all();
+    return view('site.telefoni', ['telefoni' => $telefoni]);
 }
 
+        public function pomeshcheniya() {
 
+            return new View('pomeshcheniya');
+        }
+
+    }

@@ -9,4 +9,6 @@ Route::add(['GET', 'POST'], '/login', [Controller\Site::class, 'login']);
 Route::add('GET', '/logout', [Controller\Site::class, 'logout']);
 Route::add(['GET', 'POST'], '/abonents', [Controller\Site::class, 'abonents']);
 Route::add(['GET', 'POST'], '/podrazdeleniya', [Controller\Site::class, 'podrazdeleniya']);
+Route::add(['GET', 'POST'], '/telefoni', [Controller\Site::class, 'telefoni']);
+Route::add(['GET', 'POST'], '/pomeshcheniya', [Controller\Site::class, 'pomeshcheniya']);
 

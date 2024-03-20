@@ -1,30 +1,31 @@
 <?php
-
 namespace Model;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class  pomeshcheniya extends Model 
+class pomeshcheniya extends Model
 {
-   use HasFactory;
+    use HasFactory;
 
-   public $timestamps = false;
+    public $timestamps = false;
+    protected $fillable = [
+        'pomeshcheniye_id',
+        'name_or_number',
+        'room_type',
+        'podrazdeleniye_id'
+    ];
 
-   protected $table = ' pomeshcheniya'; // Укажите имя таблицы
 
-   protected $primaryKey = ' pomeshcheniya_id'; // Укажите поле первичного ключа
 
-   protected $fillable = [
-       'name_or_number',
-       'room_type',
-       'podrazdeleniye_id',
-   ];
+    protected $table = 'pomeshcheniya';
 
-   // Определите отношение между Pomeshcheniya и Podrazdeleniya
-   public function department()
-   {
-       return $this->belongsTo( pomeshcheniya::class, 'podrazdeleniye_id', 'podrazdeleniye_id');
-   }
+    protected $primaryKey = 'pomeshcheniye_id';
 
+    
+
+    public function podrazdeleniya()
+    {
+        return $this->hasMany(Employee::class, 'pomeshcheniye_id', 'podrazdeleniye_id');
+    }
 }

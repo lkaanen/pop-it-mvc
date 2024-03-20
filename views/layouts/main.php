@@ -40,7 +40,10 @@
            ?>
            <a href="<?= app()->route->getUrl('/logout') ?>">Выход (<?= app()->auth::user()->name ?>)</a>
            <a href="<?= app()->route->getUrl('/abonents') ?>">добавить абонента</a>  
-           <a href="<?= app()->route->getUrl('/podrazdeleniya') ?>">подразделения</a>         
+           <a href="<?= app()->route->getUrl('/podrazdeleniya') ?>">подразделения</a>  
+           <a href="<?= app()->route->getUrl('/telefoni') ?>">телефоны</a> 
+           <a href="<?= app()->route->getUrl('/pomeshcheniya') ?>">помещения</a>   
+              
        <?php
        endif;
        ?>
