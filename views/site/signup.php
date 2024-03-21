@@ -5,9 +5,9 @@
    <label>Логин <input type="text" name="login"></label>
    <label>Пароль <input type="password" name="password"></label>
    <label>Роль 
-      <select name="role">
-         <option value="admin">Администратор</option>
-         <option value="dean_staff">Сотрудник </option>
+      <select name="role_id">
+         <option value="1">Администратор</option>
+         <option value="2">Сотрудник </option>
       </select>
    </label><br>
    <button>Зарегистрироваться</button>
@@ -81,3 +81,4 @@
             background-color: #0056b3;
         }
     </style>
+    

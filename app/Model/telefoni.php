@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace Model;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -19,7 +19,7 @@ class telefoni extends Model
     ];
 
     // Определение отношения "многие-к-одному" с самим собой (self-referencing)
-    public function telefon()
+    public function telefoni()
     {
         return $this->belongsTo(telefoni::class, 'parent_id', 'telefon_id');
     }

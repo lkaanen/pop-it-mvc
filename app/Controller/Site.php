@@ -10,11 +10,8 @@ use Src\Auth\Auth;
 use Model\abonents;
 use Src\Validator\Validator;
 use Model\podrazdeleniya;
-use Model\telefoni;
 use Model\pomeshcheniya;
-
-
-
+use Model\telefoni;
 
 class Site
 {
@@ -24,19 +21,18 @@ class Site
        return (new View())->render('site.post', ['posts' => $posts]);
     }
 
-   public function hello(): string
-   {
-       return new View('site.hello', ['message' => 'hello working']);
-   }
-
-   public function signup(Request $request): string
+    public function hello(): string
     {
-    if ($request->method === 'POST' && User::create($request->all())) {
-        app()->route->redirect('/hello');
+       return (new View())->render('site.hello', ['message' => 'hello working']);
     }
-    {
-        if ($request->method === 'POST') {
 
+    public function signup(Request $request): string
+    {
+        if ($request->method === 'POST' && User::create($request->all())) {
+            app()->route->redirect('/hello');
+        }
+
+        if ($request->method === 'POST') {
             $validator = new Validator($request->all(), [
                 'name' => ['required'],
                 'login' => ['required', 'unique:users,login'],
@@ -47,32 +43,28 @@ class Site
             ]);
 
             if($validator->fails()){
-                return new View('site.signup',
-                    ['message' => json_encode($validator->errors(), JSON_UNESCAPED_UNICODE)]);
+                return (new View())->render('site.signup', ['message' => json_encode($validator->errors(), JSON_UNESCAPED_UNICODE)]);
             }
 
             if (User::create($request->all())) {
                 app()->route->redirect('/login');
             }
         }
-        return new View('site.signup');
-     }
 
+        return (new View())->render('site.signup');
     }
-
 
     public function login(Request $request): string
     {
-    //Если просто обращение к странице, то отобразить форму
-    if ($request->method === 'GET') {
-        return new View('site.login');
-    }
-    //Если удалось аутентифицировать пользователя, то редирект
-    if (Auth::attempt($request->all())) {
-        app()->route->redirect('/hello');
-    }
-    //Если аутентификация не удалась, то сообщение об ошибке
-    return new View('site.login', ['message' => 'Неправильные логин или пароль']);
+        if ($request->method === 'GET') {
+            return (new View())->render('site.login');
+        }
+
+        if (Auth::attempt($request->all())) {
+            app()->route->redirect('/hello');
+        }
+
+        return (new View())->render('site.login', ['message' => 'Неправильные логин или пароль']);
     }
 
     public function logout(): void
@@ -84,24 +76,24 @@ class Site
     public function abonents(Request $request): string
     {
         $abonents = abonents::all();
-        return new View('site.abonents', ['abonents' => $abonents]);
+        return (new View())->render('site.abonents', ['abonents' => $abonents]);
     }
 
-    public function podrazdeleniya (Request $request): string
+    public function podrazdeleniya(Request $request): string
     {
         $podrazdeleniya = podrazdeleniya::all();
-        return new View('site.podrazdeleniya', ['podrazdeleniya' => $podrazdeleniya]);
+        return (new View())->render('site.podrazdeleniya', ['podrazdeleniya' => $podrazdeleniya]);
     }
 
-    public function telefoni(Request $request)
-{
-    $telefoni = telefoni::all();
-    return view('site.telefoni', ['telefoni' => $telefoni]);
+    public function telefoni(): string
+    {
+        $telefoni = telefoni::all();
+        return (new View())->render('site.telefoni', ['telefoni' => $telefoni]);
+    }
+
+    public function pomeshcheniya(): string
+    {
+        $pomeshcheniya = pomeshcheniya::all();
+        return (new View())->render('site.pomeshcheniya', ['pomeshcheniya' => $pomeshcheniya]);
+    }
 }
-
-        public function pomeshcheniya() {
-
-            return new View('pomeshcheniya');
-        }
-
-    }

@@ -28,26 +28,22 @@
            margin-right: 10px;
        }
    </style>
-   <nav>
-       <a href="<?= app()->route->getUrl('/hello') ?>">Главная</a>
-       <?php
-       if (!app()->auth::check()):
-           ?>
-           <a href="<?= app()->route->getUrl('/login') ?>">Вход</a>
-           <a href="<?= app()->route->getUrl('/signup') ?>">Регистрация</a>
-       <?php
-       else:
-           ?>
-           <a href="<?= app()->route->getUrl('/logout') ?>">Выход (<?= app()->auth::user()->name ?>)</a>
-           <a href="<?= app()->route->getUrl('/abonents') ?>">добавить абонента</a>  
-           <a href="<?= app()->route->getUrl('/podrazdeleniya') ?>">подразделения</a>  
-           <a href="<?= app()->route->getUrl('/telefoni') ?>">телефоны</a> 
-           <a href="<?= app()->route->getUrl('/pomeshcheniya') ?>">помещения</a>   
-              
-       <?php
-       endif;
-       ?>
-   </nav>
+  <nav>
+    <a href="<?= app()->route->getUrl('/hello') ?>">Главная</a>
+    <?php if (!app()->auth::check()): ?>
+        <a href="<?= app()->route->getUrl('/login') ?>">Вход</a>
+        <a href="<?= app()->route->getUrl('/signup') ?>">Регистрация</a>
+    <?php else: ?>
+        <a href="<?= app()->route->getUrl('/logout') ?>">Выход (<?= app()->auth::user()->name ?>)</a>
+        <?php if (app()->auth::user()->role_id === 1): ?>
+            <a href="<?= app()->route->getUrl('/abonents') ?>">Добавить абонента</a>
+        <?php else: ?>
+        <a href="<?= app()->route->getUrl('/podrazdeleniya') ?>">Подразделения</a>
+        <a href="<?= app()->route->getUrl('/telefoni') ?>">Телефоны</a> 
+        <a href="<?= app()->route->getUrl('/pomeshcheniya') ?>">Помещения</a>  
+        <?php endif; ?>
+    <?php endif; ?>
+</nav>
 </header>
 <main>
    <?= $content ?? '' ?>

@@ -8,7 +8,7 @@
 <body>
     <h1>Подсчет количества абонентов по подразделениям и помещениям</h1>
     
-    <form action="process_data.php" method="post">
+    <form method="post">
         <label for="department">Введите название подразделения:</label>
         <input type="text" id="department" name="department" required>
         
